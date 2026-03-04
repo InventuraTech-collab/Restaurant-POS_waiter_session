@@ -1,0 +1,211 @@
+/* File: PageTitle.css */
+:root {
+  --accent: #ff6b35;
+  --pill-border: #e8e8e8;
+  --text: #111827;
+  --touch-size: 44px;
+}
+
+.pt-container {
+  padding: 12px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pt-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-title {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.search-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border-radius: 24px;
+  border: 1px solid #eee;
+  padding: 6px 10px;
+  width: 260px;
+  height: 40px;
+  background: #fff;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.pt-pills-row {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-buttons {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.btn-category {
+  border-radius: 20px;
+  border: 1px solid var(--pill-border);
+  padding: 8px 14px;
+  cursor: pointer;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.btn-active {
+  background-color: var(--accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .pt-top {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .search-wrap {
+    width: 100%;
+    justify-content: center;
+  }
+  .search-box {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* Responsive pills row */
+.pt-pills-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* left: horizontal scrolling category buttons */
+.category-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  max-width: 100%;
+}
+
+/* hide scrollbar visually but keep functionality (nice for mobile) */
+.category-buttons::-webkit-scrollbar {
+  height: 6px;
+}
+.category-buttons::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.06);
+  border-radius: 6px;
+}
+
+/* container for veg/non-veg buttons on desktop */
+.pill-filter-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* mobile: stack and center pills, keep spacing */
+@media (max-width: 640px) {
+  .pt-pills-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  /* make categories wrap into 2 columns on very narrow screens (if many pills) */
+  .category-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    overflow: visible;
+  }
+
+  /* show filter buttons as a compact horizontal row that centers */
+  .pill-filter-group {
+    justify-content: center;
+    width: 100%;
+    padding-top: 4px;
+  }
+
+  /* ensure pills stay large enough to tap */
+  .btn-category {
+    min-height: var(--touch-size);
+    padding: 10px 12px;
+    flex: 1 1 auto;
+  }
+}
+
+/* medium screens: if space is constrained, allow the category buttons to shrink and the filter group to the right */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .pt-pills-row { gap: 8px; }
+  .category-buttons { overflow-x: auto; flex: 1 1 auto; }
+  .pill-filter-group { flex: 0 0 auto; }
+}
+
+/* accessibility: increase touch area for the small filter icons */
+.pill-filter-group .btn-category .bi {
+  margin-right: 6px;
+}
+
+/* default (fallback) — set to 0 so small screens are safe */
+.pt-container {
+  padding: 12px 20px;
+  max-width: 1400px;
+  margin-top: 0; /* default */
+}
+
+/* <= 1400px -> margin-top: 0 */
+@media (max-width: 1400px) {
+  .pt-container {
+    margin-top: 0px;
+  }
+}
+
+/* 1401px — 3820px -> margin-top: 50px */
+@media (min-width: 1401px) and (max-width: 3820px) {
+  .pt-container {
+    margin-top: 50px;
+  }
+}
+
+/* > 3820px -> choose behavior for ultra-wide screens (optional) */
+@media (min-width: 3821px) {
+  .pt-container {
+    margin-top: 50px; /* keep same as 1401-3820, or change if you want */
+  }
+}
+
+
+
+
+
+
